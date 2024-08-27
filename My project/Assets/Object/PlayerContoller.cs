@@ -16,15 +16,23 @@ public class PlayerContoller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space)) 
+        if (Input.GetKeyDown(KeyCode.Space))
         {
+        }
+
             this.rigidbody2D.AddForce(transform.up*this.junpForce);
             int Key = 0;
             if(Input.GetKeyDown(KeyCode.LeftShift)) 
             { Key = -1; }    
             if(Input.GetKeyDown(KeyCode.RightShift)) 
             { Key = 1; }
-
+        if (transform.position.y < -10||transform.position.x<-3||transform.position.x>3)
+        {
+            ScreenManager.LoadScenes("GameScrenes");
+        }
+        else if(transform.position.y>17)
+        {
+            this.transform.position=new Vector3(transform.position.x,17,transform.position.z);
         }
     }
 }
